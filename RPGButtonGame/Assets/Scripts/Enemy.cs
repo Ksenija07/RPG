@@ -4,5 +4,34 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    [SerializeField] private int aggresion = 10;
+    [SerializeField] internal int aggresion = 10;
+    public GameObject berserker;
+    public GameObject goblin;
+    public GameObject archer;
+
+    private void Die()
+    {
+        Debug.Log("Enemy has died!");
+        RespawnEnemy();
+    }
+
+    private void RespawnEnemy()
+    {
+        int randomEnemy = Random.Range(0, 3); // Randomly choose one of the 3 enemies
+
+        GameObject enemyToRespawn = null;
+
+        switch (randomEnemy)
+        {
+            case 0:
+                enemyToRespawn = berserker;
+                break;
+            case 1:
+                enemyToRespawn = goblin;
+                break;
+            case 2:
+                enemyToRespawn = archer;
+                break;
+        }
+    }
 }
