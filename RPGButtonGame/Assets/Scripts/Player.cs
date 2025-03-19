@@ -10,4 +10,14 @@ public class Player : Character
     {
         get { return charName; }
     }
+
+    void Update()
+    {
+        if (health <= 0 && !isDead)
+        {
+            isDead = true;
+            gameManager.gameOver();
+            Debug.Log("Dead");
+        }
+    }
 }

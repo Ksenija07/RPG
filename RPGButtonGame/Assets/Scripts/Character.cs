@@ -7,23 +7,17 @@ public class Character : MonoBehaviour
     public int health;
     public float maxHealth;
     public GameManager gameManager;
-    [SerializeField] private bool isDead;
+    [SerializeField] public bool isDead;
     [SerializeField] private Weapon activWeapon;
+    private Shield shield;
 
     void Start()
     {
         maxHealth = health;
+        shield = GetComponent<Shield>();
     }
 
-    void Update()
-    {
-        if(health <=0 && !isDead)
-        {
-            isDead = true;
-            gameManager.gameOver();
-            Debug.Log("Dead");
-        }
-    }
+   
     public Weapon Activeweapon
     {
        get { return activWeapon; }
@@ -37,6 +31,10 @@ public class Character : MonoBehaviour
    
     public void GetHit(int damage)
     {
+        if(shield != null)
+        {
+            damage = shield.AbsorbDamage(damage);
+        }
         health -= damage;
         health = Mathf.Max(health, 0);
         Debug.Log(name + " current health " + health);

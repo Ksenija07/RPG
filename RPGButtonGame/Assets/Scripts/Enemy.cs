@@ -17,7 +17,7 @@ public class Enemy : Character
 
     private void RespawnEnemy()
     {
-        int randomEnemy = Random.Range(0, 3); // Randomly choose one of the 3 enemies
+        int randomEnemy = Random.Range(0, 3);
 
         GameObject enemyToRespawn = null;
 
