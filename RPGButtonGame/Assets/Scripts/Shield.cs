@@ -20,7 +20,7 @@ public class Shield : MonoBehaviour
 
     public int AbsorbDamage (int damage)
     {
-        if (isActiveAndEnabled && shieldDurability > 0)
+        if (isShieldActive && shieldDurability > 0)
         {
             int shieldAbsorbed = Mathf.RoundToInt(damage * shieldAbsorptionRate);
             int remainingDamage = damage - shieldAbsorbed;

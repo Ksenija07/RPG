@@ -14,6 +14,6 @@ public class Bow : Weapon
         {
             totalDamage += Random.Range(minDamage, maxDamage + 1) + additionalDamage;
         }
-
+        character.GetHit(totalDamage);
     }
 }

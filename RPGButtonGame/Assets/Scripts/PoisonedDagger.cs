@@ -10,7 +10,8 @@ public class PoisonedDagger : Weapon
     {
         int totalDamage = 0;
         totalDamage += Random.Range(minDamage, maxDamage + 1) + poisonDamage;
-      
+        Debug.Log("Addind posion damage: " + totalDamage);
+        character.GetHit(totalDamage);
     }
-
+    
 }

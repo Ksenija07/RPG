@@ -28,8 +28,10 @@ public class GameManager : MonoBehaviour
     {
         int playerDamage = player.Attack();
         enemy.GetHit(playerDamage);
+        player.Activeweapon.ApplyEffect(enemy);
         int enemyDamage = enemy.Attack();
         player.GetHit(enemyDamage);
+        enemy.Activeweapon.ApplyEffect(player);
         playerHealthText.text = player.health.ToString();
         enemyHealthText.text = enemy.health.ToString();
     }

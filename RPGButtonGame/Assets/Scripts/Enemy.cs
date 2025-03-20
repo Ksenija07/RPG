@@ -12,10 +12,10 @@ public class Enemy : Character
     private void Die()
     {
         Debug.Log("Enemy has died!");
-        RespawnEnemy();
+        //RespawnEnemy();
     }
 
-    private void RespawnEnemy()
+    /*private void RespawnEnemy()
     {
         int randomEnemy = Random.Range(0, 3);
 
@@ -33,5 +33,5 @@ public class Enemy : Character
                 enemyToRespawn = archer;
                 break;
         }
-    }
+    }*/
 }
