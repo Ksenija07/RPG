@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
     public Player player;
     public Enemy enemy;
-    
     public Character character;
     [SerializeField] private TMP_Text playerNameText, playerHealthText, enemyNameText, enemyHealthText;
     public GameObject GameOverUI;
