@@ -8,4 +8,10 @@ public class Spear : Weapon
     {
         
     }
+
+    public void SelectWeapon(Character character)
+    {
+        character.EquipWeapon(this);
+        Debug.Log("Spear selected!");
+    }
 }

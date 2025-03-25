@@ -16,4 +16,10 @@ public class Bow : Weapon
         }
         character.GetHit(totalDamage);
     }
+
+    public void SelectWeapon(Character character)
+    {
+        character.EquipWeapon(this);
+        Debug.Log("Bow selected!");
+    }
 }

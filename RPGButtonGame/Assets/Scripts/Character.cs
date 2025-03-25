@@ -23,6 +23,12 @@ public class Character : MonoBehaviour
        get { return activWeapon; }
     }
 
+    public void EquipWeapon(Weapon newWeapon)
+    {
+        activWeapon = newWeapon;
+        Debug.Log(name + " equipped " + activWeapon.name);
+    }
+
     public virtual int Attack()
     {
         Debug.Log(name + " attacking");

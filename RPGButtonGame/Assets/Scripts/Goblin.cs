@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class Goblin : Enemy
 {
-    [SerializeField] private int attackDamage = 5;
-    [SerializeField] private float attackDelay = 0.5f;
+    [SerializeField] private int minDamage = 1;
+    [SerializeField] private int maxDamage = 5;
 
     public override int Attack()
     {
-        StartCoroutine(DoubleAttack());
-        return (attackDamage * 2) / 10;
-    }
+        int damage1 = Random.Range(minDamage, maxDamage + 1); // First attack
+        int damage2 = Random.Range(minDamage, maxDamage + 1); // Second attack
+        int totalDamage = damage1 + damage2;
 
-    private IEnumerator DoubleAttack()
-    {
-        DealDamage(attackDamage);
-        yield return new WaitForSeconds(attackDelay);
-        DealDamage(attackDamage);
-    }
+        Debug.Log($"Goblin attacks! First hit: {damage1} damage.");
+        Debug.Log($"Goblin attacks again! Second hit: {damage2} damage.");
 
-    private void DealDamage(int damage)
-    {
-        Debug.Log($"Goblin attacks for {damage} damage!");
+        return totalDamage;
     }
 }

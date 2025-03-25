@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Shield : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class Shield : MonoBehaviour
     private bool isShieldActive = false;
     [SerializeField] private float shieldAbsorptionRate = 0.5f;
     public Button shieldButton;
+    public TMP_Text shieldStatusText;
 
     void Start()
     {
         shieldDurability = shieldMaxDurability;
         isShieldActive = false;
         shieldButton.onClick.AddListener(ToggleShield);
+        UpdateShieldUI();
     }
 
     public int AbsorbDamage (int damage)
@@ -31,8 +34,13 @@ public class Shield : MonoBehaviour
                 shieldDurability = 0;
                 isShieldActive = false;
                 Debug.Log("Shield is broken!");
+                shieldStatusText.text = "Shield is Broken!";
             }
-            Debug.Log($"Shield Durability: {shieldDurability}");
+            else
+            {
+                shieldStatusText.text = $"Shield Durability: {shieldDurability}";
+            }
+
             return remainingDamage;
         }
 
@@ -45,11 +53,18 @@ public class Shield : MonoBehaviour
         if (shieldDurability > 0)
         {
             isShieldActive = !isShieldActive;
+            shieldStatusText.text = isShieldActive ? "Shield Activated!" : "Shield Deactivated!";
             Debug.Log(isShieldActive ? "Shield is Activated" : "Shield is Deactivated");
         }
         else
         {
+            shieldStatusText.text = "Shield is Broken!";
             Debug.Log("Shield is broken");
         }
+    }
+
+    private void UpdateShieldUI()
+    {
+        shieldStatusText.text = $"Shield Durability: {shieldDurability}";
     }
 }
