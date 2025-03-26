@@ -5,6 +5,12 @@ using UnityEngine;
 public class PoisonedDagger : Weapon
 {
     [SerializeField] private int poisonDamage = 2;
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
     public override void ApplyEffect(Character character)
     {
         int totalDamage = 0;
@@ -17,6 +23,11 @@ public class PoisonedDagger : Weapon
     {
         character.EquipWeapon(this); 
         Debug.Log("Poisoned Dagger selected!");
+
+        if (gameManager != null)
+        {
+            gameManager.UpdateSelectedWeaponText("Poisoned Dagger");
+        }
     }
 
 }

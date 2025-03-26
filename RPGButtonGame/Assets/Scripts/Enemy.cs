@@ -5,9 +5,9 @@ using UnityEngine;
 public class Enemy : Character
 {
     [SerializeField] internal int aggresion = 10;
-    public GameObject berserker;
+   /* public GameObject berserker;
     public GameObject goblin;
-    public GameObject archer;
+    public GameObject archer;*/
 
     private void Die()
     {

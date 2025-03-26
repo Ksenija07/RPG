@@ -5,6 +5,11 @@ using UnityEngine;
 public class Bow : Weapon
 {
     [SerializeField] private int additionalDamage = 5;
+    private GameManager gameManager;
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
     public override void ApplyEffect(Character character)
     {
         int arrowsShot = Random.Range(1, 3); 
@@ -21,5 +26,10 @@ public class Bow : Weapon
     {
         character.EquipWeapon(this);
         Debug.Log("Bow selected!");
+
+        if (gameManager != null)
+        {
+            gameManager.UpdateSelectedWeaponText("Bow");
+        }
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Spear : Weapon
 {
+    private GameManager gameManager;
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
     public override void ApplyEffect(Character character)
     {
         
@@ -13,5 +18,10 @@ public class Spear : Weapon
     {
         character.EquipWeapon(this);
         Debug.Log("Spear selected!");
+
+        if (gameManager != null)
+        {
+            gameManager.UpdateSelectedWeaponText("Spear!");
+        }
     }
 }
